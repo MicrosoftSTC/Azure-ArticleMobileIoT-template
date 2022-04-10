@@ -1,0 +1,31 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "IoTApps_mobile_iot_name": {
+            "defaultValue": "mobile-iot",
+            "type": "String"
+        }
+    },
+    "variables": {},
+    "resources": [
+        {
+            "type": "Microsoft.IoTCentral/IoTApps",
+            "apiVersion": "2021-06-01",
+            "name": "[parameters('IoTApps_mobile_iot_name')]",
+            "location": "westeurope",
+            "sku": {
+                "name": "ST0"
+            },
+            "identity": {
+                "type": "None"
+            },
+            "properties": {
+                "displayName": "[parameters('IoTApps_mobile_iot_name')]",
+                "subdomain": "[parameters('IoTApps_mobile_iot_name')]",
+                "template": "iotc-pnp-preview@1.0.0",
+                "state": "created"
+            }
+        }
+    ]
+}
